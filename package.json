@@ -1,0 +1,33 @@
+{
+	"name": "nodejs-url-shortner",
+	"version": "1.0.0",
+	"description": "A link shortner written with Node.js",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/riderjensen/nodejs-url-shortner.git"
+	},
+	"keywords": [
+		"link-shortner",
+		"node",
+		"link",
+		"shortner"
+	],
+	"author": "Rider Jensen",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/riderjensen/nodejs-url-shortner/issues"
+	},
+	"homepage": "https://github.com/riderjensen/nodejs-url-shortner#readme",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.4",
+		"mongoose": "^5.4.17",
+		"request": "^2.88.0",
+		"shortid": "^2.2.14"
+	}
+}
