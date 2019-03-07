@@ -7,15 +7,12 @@ const BANNED_WORDS = ['cunt', 'fuck'];
 
 const AUTH = true;
 
-// add or delete users, only in affectwhen AUTH is true
+// add or delete users, only in affect when AUTH is true
 const USERS = [{
 	name: 'admin',
 	password: 'admin'
 },
-{
-	name: 'zadmin',
-	password: 'zadmin'
-}
+
 ]
 
 // ======================================
