@@ -8,7 +8,7 @@ const ShortURLModel = require('../models/shortURL.model');
 exports.checkID = (req, res, next) => {
 	const URL = req.body.url;
 	if (!URL) return res.status(500).send({
-		error: 'Missing a url. Please send it in the body with the key value of url'
+		message: 'Missing a url. Please send it in the body with the key value of url'
 	})
 
 	let requestingURL = URL.trim();
@@ -21,9 +21,25 @@ exports.checkID = (req, res, next) => {
 	}
 
 	let id = req.params.id;
-	if (id === RESERVED_WORD) {
+	if (id === RESERVED_WORD || id === null || id === undefined) {
 		id = shortid.generate();
 	}
+	id = encodeURIComponent(id);
+
+	const reservedWordArray = req.app.get('bannedWords');
+
+	let reservedWord = false;
+	reservedWordArray.forEach(word => {
+		if (id.includes(word)) {
+			reservedWord = true;
+		}
+	})
+	if (reservedWord) {
+		return res.status(400).send({
+			message: "Your message included a reserved word, please try again with a different key"
+		})
+	}
+
 	ShortURLModel.findOne({ shortId: id }).then(resp => {
 		if (resp) return res.send({ avail: false, websiteResp: false });
 
@@ -32,7 +48,8 @@ exports.checkID = (req, res, next) => {
 				console.log(error)
 				return res.send({
 					avail: true,
-					websiteResp: false
+					websiteResp: false,
+					message: "The website did not return a response. If you are sure the URL is corrent then you may continue."
 				});
 			} else {
 				const newURL = new ShortURLModel({
@@ -43,11 +60,11 @@ exports.checkID = (req, res, next) => {
 					avail: true,
 					websiteResp: true,
 					resp: resp
-				}));
+				})).catch(err => res.status(500).send({ message: "There was aproblem saving your item in the database" }))
 			}
 		});
 	}).catch(err => res.status(500).send({
-		error: "We encountered an error. Please examine your data and retry"
+		message: "We encountered an error. Please examine your data and retry"
 	}));
 
 }

@@ -32,6 +32,8 @@ app.use(bodyParser.urlencoded({
 	useNewUrlParser: true
 }));
 
+app.set("bannedWords", BANNED_WORDS);
+
 if (AUTH) {
 	app.use((req, res, next) => {
 		checkAuthState(req) ? next() : res.status(401).send({ error: 'You are not authorized to access this content. Please send your usernae and password as headers.' })
@@ -57,7 +59,7 @@ app.use('/c', checkRouter);
 app.use('/', indexRouter);
 app.use('*', (req, res, next) => {
 	res.redirect('/');
-})
+});
 
 
 mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, {

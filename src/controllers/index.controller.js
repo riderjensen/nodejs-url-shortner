@@ -10,7 +10,7 @@ exports.forwardRequest = (req, res, next) => {
 	const id = req.params.id;
 	ShortURLModel.findOne({ shortId: id }).then(resp => {
 		if (resp === null) return res.status(500).send({
-			error: 'We could not find any URL with this short id'
+			message: 'We could not find any URL with this short id'
 		});
 		resp.visits = resp.visits + 1;
 		resp.occurance.push(Date.now());

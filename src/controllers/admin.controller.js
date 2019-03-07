@@ -6,7 +6,7 @@ exports.getAll = (req, res, next) => {
 
 exports.getOne = (req, res, next) => {
 	ShortURLModel.findOne({ shortId: req.params.id }).then(resp => {
-		if (!resp) return res.status(500).send({ error: 'We could not find this item in the database' })
+		if (!resp) return res.status(500).send({ message: 'We could not find this item in the database' })
 		res.status(200).send(resp);
 	});
 }
