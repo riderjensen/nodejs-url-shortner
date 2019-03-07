@@ -1,3 +1,6 @@
+const RESERVED_WORD = '5c7df95bcd19ac2d58fb4aa0';
+
+
 const shortid = require('shortid');
 const request = require('request');
 const ShortURLModel = require('../models/shortURL.model');
@@ -18,7 +21,7 @@ exports.checkID = (req, res, next) => {
 	}
 
 	let id = req.params.id;
-	if (id === '5c7df95bcd19ac2d58fb4aa0') {
+	if (id === RESERVED_WORD) {
 		id = shortid.generate();
 	}
 	ShortURLModel.findOne({ shortId: id }).then(resp => {

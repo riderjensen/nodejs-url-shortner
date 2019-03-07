@@ -1,7 +1,9 @@
 const ShortURLModel = require('../models/shortURL.model');
 
 exports.getIndex = (req, res, next) => {
-	res.send('Homepage');
+	res.status(200).send({
+		message: 'Please consult our api documents located at https://github.com/riderjensen/nodejs-url-shortner'
+	});
 }
 
 exports.forwardRequest = (req, res, next) => {

@@ -5,8 +5,18 @@ const PORT = 3000;
 const DB_NAME = 'nodejsLinkShortner';
 const BANNED_WORDS = ['cunt', 'fuck'];
 
-// This is reserved for creating items
-const RESERVED_WORD = '5c7df95bcd19ac2d58fb4aa0';
+const AUTH = true;
+
+// add or delete users, only in affectwhen AUTH is true
+const USERS = [{
+	name: 'admin',
+	password: 'admin'
+},
+{
+	name: 'zadmin',
+	password: 'zadmin'
+}
+]
 
 // ======================================
 
@@ -21,6 +31,22 @@ app.use(bodyParser.urlencoded({
 	extended: false,
 	useNewUrlParser: true
 }));
+
+if (AUTH) {
+	app.use((req, res, next) => {
+		checkAuthState(req) ? next() : res.status(401).send({ error: 'You are not authorized to access this content. Please send your usernae and password as headers.' })
+	})
+}
+
+function checkAuthState(req) {
+	let authState = false;
+	USERS.forEach(user => {
+		if (req.headers.name === user.name && req.headers.password === user.password) {
+			authState = true;
+		}
+	})
+	return authState;
+}
 
 const adminRouter = require('./src/routes/admin.router');
 const checkRouter = require('./src/routes/check.router');
