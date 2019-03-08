@@ -18,3 +18,19 @@ Features include:
 3. npm install
 4. Edit the settings at the top of app.js
 5. run the application with `npm start`
+
+## Instructions for using the API
+
+If you enable auth in app.js, all routes will be protected and require the following headers
+`
+  name:
+  password:
+`
+
+`/` - Returns a message to visit the documentation <br />
+`/:id` - returns a response with a 'url' property with the associated URL to the id <br />
+`/a` - returns all short URLs currently supported in the database including all stats associated <br />
+`/a/:id` - returns one specific shortened URL with the stats attached. The :id is not the id in the database, but instead the id that is in the URL that someone is requesting <br />
+`/c/:id` - this is used to check a URL to see if the shortId is already in use. It also includes a URL checker to see if we get a response from the URL that the requester needs. <br />
+
+<strong>If there is a 'message' property attached to the response, any errors will be attached there.</strong>
