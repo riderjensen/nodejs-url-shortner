@@ -1,6 +1,8 @@
 # RESTful API Nodejs URL Shortner Boilerplate
 
-A flexible and lightweight node URL shortner. Features include:
+## A flexible and lightweight node URL shortner. 
+
+Features include:
 
 * Optional authentication
 * Quick set up within 5 minutes
@@ -9,7 +11,7 @@ A flexible and lightweight node URL shortner. Features include:
 * Tracking how many times and when a URL is used
 * Easily extend functionality and what you track
 
-Instructions for setup:
+## Instructions for setup:
 
 1. Required installs are Node.js and MongoDB
 2. Clone the repository using `git clone https://github.com/riderjensen/nodejs-url-shortner`
