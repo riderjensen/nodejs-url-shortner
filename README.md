@@ -11,9 +11,7 @@ A flexible and lightweight node URL shortner. Features include:
 
 Instructions for setup:
 
-1. Required installs:
-  * Node.js
-  * MongoDB
+1. Required installs are Node.js and MongoDB
 2. Clone the repository using `git clone https://github.com/riderjensen/nodejs-url-shortner`
 3. npm install
 4. Edit the settings at the top of app.js
