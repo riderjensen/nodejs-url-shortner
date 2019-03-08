@@ -44,24 +44,23 @@ exports.checkID = (req, res, next) => {
 		if (resp) return res.send({ avail: false, websiteResp: false });
 
 		request(requestingURL, (error, response) => {
+			let message = null;
+			let websiteResp = true;
 			if (error != null) {
-				console.log(error)
-				return res.send({
-					avail: true,
-					websiteResp: false,
-					message: "The website did not return a response. If you are sure the URL is corrent then you may continue."
-				});
-			} else {
-				const newURL = new ShortURLModel({
-					shortId: id,
-					url: requestingURL
-				})
-				newURL.save().then(resp => res.send({
-					avail: true,
-					websiteResp: true,
-					resp: resp
-				})).catch(err => res.status(500).send({ message: "There was aproblem saving your item in the database" }))
+				message = "The website did not return a response. If you are sure the URL is corrent then you may continue";
+				websiteResp = false;
 			}
+			const newURL = new ShortURLModel({
+				shortId: id,
+				url: requestingURL
+			})
+			newURL.save().then(resp => res.send({
+				avail: true,
+				websiteResp: websiteResp,
+				resp: resp,
+				message: message
+			})).catch(err => res.status(500).send({ message: "There was a problem saving your item in the database" }))
+
 		});
 	}).catch(err => res.status(500).send({
 		message: "We encountered an error. Please examine your data and retry"
