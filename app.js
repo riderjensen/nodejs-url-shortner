@@ -1,7 +1,7 @@
 // EDIT THESE VARIABLES TO WORK WITH YOUR SERVER CONFIGURATION
 // ======================================
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DB_NAME = 'nodejsLinkShortner';
 const BANNED_WORDS = ['cunt', 'fuck'];
 
