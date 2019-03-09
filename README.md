@@ -6,10 +6,11 @@ Features include:
 
 * Optional authentication
 * Quick set up within 5 minutes
-* Admin route to view all routes at the same time
+* Admin route to view all URLs at the same time
 * Responses of JSON from the API makes it easy to build an application area to view statistics
 * Tracking how many times and when a URL is used
 * Easily extend functionality and what you track
+* Optional MVC attachment
 
 ## Instructions for setup:
 
@@ -22,10 +23,10 @@ Features include:
 ## Instructions for using the API
 
 If you enable auth in app.js, all routes will be protected and require the following headers
-`
-  name:
-  password:
-`
+<br />
+`name:`
+<br />
+`password:`
 
 `/` - Returns a message to visit the documentation <br />
 `/:id` - returns a response with a 'url' property with the associated URL to the id <br />
