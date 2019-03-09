@@ -1,5 +1,7 @@
 # RESTful API Nodejs URL Shortner Boilerplate
 
+MVC is optional, this can be used as a RESTful API instead and it defaults to REST
+
 ## A flexible and lightweight node URL shortner. 
 
 Features include:
