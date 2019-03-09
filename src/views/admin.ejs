@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Url Shortner</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+
+<body id="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Admin area</h1>
+				<% for(var i=0; i<resp.length; i++) {%>
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">ID: <%= resp[i].shortId%></h5>
+						<p class="card-text">URL: <%= resp[i].url%></p>
+						<p class="card-text">Visits: <%= resp[i].visits%></p>
+						<a href="/a/<%= resp[i].shortId%>" class="btn btn-primary">More information</a>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>

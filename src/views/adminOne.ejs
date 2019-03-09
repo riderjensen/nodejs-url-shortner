@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Url Shortner</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+
+<body id="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Admin area</h1>
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">ID: <%= resp.shortId%></h5>
+						<p class="card-text">URL: <%= resp.url%></p>
+						<p class="card-text">Visits: <%= resp.visits%></p>
+						<ul id="myUL">
+							<% for(var i=0; i<resp.occurance.length; i++) {%>
+							<li><%= resp.occurance[i]%></li>
+							<% } %>
+						</ul>
+						<a href="/<%= resp.shortId%>" class="btn btn-primary">Short Link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const myList = document.getElementById('myUL').children;
+		console.log(myList)
+		for (let item in myList) {
+			console.log(myList[item]);
+			myList[item].textContent = new Date(parseInt(myList[item].textContent))
+		}
+	</script>
+</body>
+
+</html>
