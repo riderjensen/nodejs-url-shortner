@@ -5,7 +5,9 @@ const PORT = process.env.PORT || 3000;
 const DB_NAME = 'nodejsLinkShortner';
 const BANNED_WORDS = ['cunt', 'fuck'];
 
-const AUTH = true;
+const MVC = true;
+
+const AUTH = false;
 
 // add or delete users, only in affect when AUTH is true
 const USERS = [{
@@ -24,12 +26,17 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+app.use(express.static(`public`));
+app.set('views', './src/views');
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
 	extended: false,
 	useNewUrlParser: true
 }));
+app.use(bodyParser.json())
 
 app.set("bannedWords", BANNED_WORDS);
+app.set("MVC", MVC);
 
 if (AUTH) {
 	app.use((req, res, next) => {

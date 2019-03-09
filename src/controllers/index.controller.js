@@ -1,9 +1,8 @@
 const ShortURLModel = require('../models/shortURL.model');
 
 exports.getIndex = (req, res, next) => {
-	res.status(200).send({
-		message: 'Please consult our api documents located at https://github.com/riderjensen/nodejs-url-shortner'
-	});
+	const MVC = req.app.get('MVC');
+	MVC ? res.render('index') : res.status(200).send({ message: 'Please consult our api documents located at https://github.com/riderjensen/nodejs-url-shortner' });
 }
 
 exports.forwardRequest = (req, res, next) => {
@@ -15,9 +14,8 @@ exports.forwardRequest = (req, res, next) => {
 		resp.visits = resp.visits + 1;
 		resp.occurance.push(Date.now());
 		resp.save().then(_ => {
-			res.status(200).send({
-				url: resp.url
-			});
+			const MVC = req.app.get('MVC');
+			MVC ? res.send(`<script>location.href = "${resp.url}"</script>`) : res.status(200).send({ url: resp.url });
 		})
 	})
 }

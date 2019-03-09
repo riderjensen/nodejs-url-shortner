@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Url Shortner</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+
+<body id="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Homepage</h1>
+				<form>
+					<div class="form-group">
+						<label for="expURL">URL</label>
+						<input type="url" class="form-control" id="expURL" aria-describedby="expURL"
+							placeholder="Enter URL">
+						<div id="errorArea"></div>
+
+					</div>
+					<div class="form-group">
+						<label for="expShortID">Short ID</label>
+						<input type="string" class="form-control" id="expShortID" aria-describedby="expShortID"
+							placeholder="Short ID">
+						<small id="emailHelp" class="form-text text-muted">If you don't include an ID, we will generate
+							a unique ID for your url.</small>
+					</div>
+					<button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<h5 class="card-title" id="cardTitle"></h5>
+			</div>
+		</div>
+	</div>
+	<script src="../js/index.js"></script>
+</body>
+
+</html>
