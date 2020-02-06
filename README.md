@@ -1,3 +1,5 @@
+A working example is located on [Heroku](https://easy-shortner.herokuapp.com)
+
 # RESTful API Nodejs URL Shortner Boilerplate
 
 MVC is optional, this can be used as a RESTful API instead and it defaults to REST
