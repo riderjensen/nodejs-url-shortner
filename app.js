@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const DB_NAME = 'nodejsLinkShortner';
 const BANNED_WORDS = ['cunt', 'fuck'];
 
-const MVC = false;
+const MVC = true;
 
 const AUTH = false;
 
