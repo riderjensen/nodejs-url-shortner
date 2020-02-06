@@ -40,7 +40,7 @@ app.set("MVC", MVC);
 
 if (AUTH) {
 	app.use((req, res, next) => {
-		checkAuthState(req) ? next() : res.status(401).send({ error: 'You are not authorized to access this content. Please send your usernae and password as headers.' })
+		checkAuthState(req) ? next() : res.status(401).send({ error: 'You are not authorized to access this content. Please send your username and password as headers.' })
 	})
 }
 
@@ -66,7 +66,7 @@ app.use('*', (req, res, next) => {
 });
 
 
-mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, {
+mongoose.connect(`mongodb+srv://${process.env.DBusername}:${process.env.DBpassword}@cluster0-b5ytq.mongodb.net/test?retryWrites=true&w=majority`, {
 	useNewUrlParser: true
 }).then(_ => {
 	app.listen(PORT, () => console.log(`App is running on ${PORT}`));
