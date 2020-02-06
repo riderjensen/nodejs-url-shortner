@@ -39,3 +39,9 @@ GET `/a/:id` - returns one specific shortened URL with the stats attached. The :
 POST `/c/:id` - this is used to check a URL to see if the shortId is already in use. It also includes a URL checker to see if we get a response from the URL that the requester needs. <br />
 
 <strong>If there is a 'message' property attached to the response, any errors will be attached there.</strong>
+
+
+### Todo
+
+1. Add some error feedback on the MVC
+2. Add some better auth like JWT
