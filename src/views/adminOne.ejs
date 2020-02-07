@@ -59,9 +59,15 @@
 		for (let item in myList) {
 			const date = new Date(parseInt(myList[item].textContent));
 			myList[item].textContent = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
-			dateList.push({
-				x: date,
-				y: 1
+			dateList.forEach(date => {
+				if (date.x === date.toLocaleDateString()) {
+					date.y++
+				} else {
+					dateList.push({
+						x: date.toLocaleDateString(),
+						y: 1
+					})
+				}
 			})
 		}
 
