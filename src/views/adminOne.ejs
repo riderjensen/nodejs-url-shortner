@@ -11,18 +11,19 @@
 
 <body id="body">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		
+
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="/">Home </a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" href="/a">Admin <span class="sr-only">(current)</span></a>
-			</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home </a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/a">Admin <span class="sr-only">(current)</span></a>
+				</li>
 			</ul>
 
 		</div>
@@ -47,34 +48,44 @@
 	<script src="/js/bootstrap.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<script>
-		
 		// created at date
 		const created = document.querySelector('#created');
 		const createdDate = new Date(created.textContent);
 		created.textContent = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
 
 		// list of dates visited
-		const myDateList = []
+		const views = []
+		const labels = []
+
 		const myList = document.querySelector('#myUL').children;
 		for (let item in myList) {
 			const date = new Date(parseInt(myList[item].textContent));
-			const parsedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+			const parsedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
 			myList[item].textContent = parsedDate
 
-			if(parsedDate !== "Invalid Date Invalid Date") {
-				myDateList.push({
-					x: date.getTime(),
-					y: 1
-				})
+			if (!labels.includes(parsedDate)) {
+				labels.push(parsedDate);
+				views.push(1)
+			} else {
+				views[labels.indexOf(parsedDate)]++
 			}
-
 		}
 
+		console.log(labels)
+		console.log(views);
 
-		const ctx = document.querySelector('#myChart');
-		const myChart = new Chart(ctx, {
+
+		new Chart(document.querySelector('#myChart'), {
 			type: 'line',
-			data: myDateList,
+			data: {
+				labels: [1, 2, 3, 4, 5, 6, 7],
+				"datasets": [{
+					"data": [65, 59, 80, 81, 56, 55, 40],
+					"fill": false,
+					"borderColor": "rgb(75, 192, 192)",
+					"lineTension": 0.1
+				}]
+			},
 			options: {
 				title: {
 					text: 'URL Visited'
@@ -95,7 +106,24 @@
 				},
 			}
 		});
-		</script>
+	</script>
 </body>
 
 </html>
+
+<script>
+	new Chart(document.getElementById("chartjs-0"), {
+		"type": "line",
+		"data": {
+			"labels": ["January", "February", "March", "April", "May", "June", "July"],
+			"datasets": [{
+				"label": "My First Dataset",
+				"data": [65, 59, 80, 81, 56, 55, 40],
+				"fill": false,
+				"borderColor": "rgb(75, 192, 192)",
+				"lineTension": 0.1
+			}]
+		},
+		"options": {}
+	});
+</script>
