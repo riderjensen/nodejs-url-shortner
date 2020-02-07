@@ -34,7 +34,7 @@
 				<h3>ID: <%= resp.shortId%> - <a href="/<%= resp.shortId%>">Short Link</a></h3>
 				<p class="text-muted" style="margin: 0;">Created At: <span id="created"><%= resp.createdAt%></span></p>
 				<p>Visits: <%= resp.visits%></p>
-				<!-- <canvas id="myChart" width="100%" height="400"></canvas> -->
+				<canvas id="myChart" width="100%" height="400"></canvas>
 				<ul id="myUL" class="list-group list-group-flush">
 					<% for(var i=0; i<resp.occurance.length; i++) {%>
 					<li class="text-muted list-group-item" style="font-size: 12px;"><%= resp.occurance[i]%></li>
@@ -63,7 +63,7 @@
 
 			if(parsedDate !== "Invalid Date Invalid Date") {
 				myDateList.push({
-					x: parsedDate,
+					x: date.getTIme(),
 					y: 1
 				})
 			}
@@ -71,30 +71,30 @@
 		}
 
 
-		// const ctx = document.querySelector('#myChart');
-		// const myChart = new Chart(ctx, {
-		// 	type: 'line',
-		// 	data: myDateList,
-		// 	options: {
-		// 		title: {
-		// 			text: 'URL Visited'
-		// 		},
-		// 		scales: {
-		// 			xAxes: [{
-		// 				scaleLabel: {
-		// 					display: true,
-		// 					labelString: 'Date'
-		// 				}
-		// 			}],
-		// 			yAxes: [{
-		// 				scaleLabel: {
-		// 					display: true,
-		// 					labelString: 'value'
-		// 				}
-		// 			}]
-		// 		},
-		// 	}
-		// });
+		const ctx = document.querySelector('#myChart');
+		const myChart = new Chart(ctx, {
+			type: 'line',
+			data: myDateList,
+			options: {
+				title: {
+					text: 'URL Visited'
+				},
+				scales: {
+					xAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'value'
+						}
+					}]
+				},
+			}
+		});
 		</script>
 </body>
 
