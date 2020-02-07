@@ -43,5 +43,5 @@ POST `/c/:id` - this is used to check a URL to see if the shortId is already in 
 
 ### Todo
 
-1. Add some error feedback on the MVC
+1. ~~Add some error feedback on the MVC~~
 2. Add some better auth like JWT

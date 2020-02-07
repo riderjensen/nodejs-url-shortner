@@ -5,11 +5,11 @@ const ourErrorHtml = document.getElementById('errorArea');
 
 submitButton.addEventListener('click', (event) => {
 	event.preventDefault();
-	URLBox.value === '' ? createErr('Missing URL', 'danger') : fetchInfo();
+	URLBox.value === '' ? createErr('Missing URL', 'danger', URLBox) : fetchInfo();
 })
 
-function createErr(text, errorColor) {
-	URLBox.className += ` border border-${errorColor}`
+function createErr(text, errorColor, element) {
+	element.className += ` border border-${errorColor}`
 	ourErrorHtml.setAttribute('class', `alert alert-${errorColor}`);
 	ourErrorHtml.setAttribute('role', 'alert');
 	ourErrorHtml.innerText = text;
@@ -17,6 +17,7 @@ function createErr(text, errorColor) {
 
 function clearErr() {
 	URLBox.className = 'form-control';
+	IDBox.className = 'form-control'
 	ourErrorHtml.setAttribute('class', '');
 	ourErrorHtml.setAttribute('role', '');
 	ourErrorHtml.innerText = '';
@@ -38,7 +39,7 @@ function fetchInfo() {
 		return response.json();
 	}).then(myJson => {
 		if (myJson.message) {
-			createErr(myJson.message, 'danger')
+			createErr(myJson.message, 'danger', IDBox)
 		} else {
 			document.getElementById('cardTitle').innerHTML = `<a target="_blank" href="/${myJson.resp.shortId}">${myJson.resp.shortId}</a>`;
 		}
