@@ -36,9 +36,7 @@
 				<div class="card" style="width: 100%; margin-top: 15px;">
 					<div class="card-body">
 						<h5 class="card-title">ID: <%= resp[i].shortId%></h5>
-						<p class="card-text">URL: <%= resp[i].url%></p>
-						<p class="card-text">Visits: <%= resp[i].visits%></p>
-						<a href="/a/<%= resp[i].shortId%>" class="btn btn-primary">More information</a>
+						<a href="/a/<%= resp[i].shortId%>">More information</a>
 					</div>
 				</div>
 				<% } %>

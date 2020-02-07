@@ -30,13 +30,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-md-3"></div>
-			<div class="col-xs-12 col-md-6">
-				<h3 class="text-primary">ID: <%= resp.shortId%></h3>
-				<p class="card-text">URL: <a href="/<%= resp.shortId%>">Short Link</a></p>
+			<div class="col-xs-12 col-md-6 text-center">
+				<h3>ID: <%= resp.shortId%> - <a href="/<%= resp.shortId%>">Short Link</a></h3>
 				<p class="card-text">Visits: <%= resp.visits%></p>
 				<ul id="myUL" class="list-group list-group-flush">
 					<% for(var i=0; i<resp.occurance.length; i++) {%>
-					<li class="text-muted" style="font-size: 12px;"><%= resp.occurance[i]%></li>
+					<li class="text-muted list-group-item" style="font-size: 12px;"><%= resp.occurance[i]%></li>
 					<% } %>
 				</ul>
 			</div>
