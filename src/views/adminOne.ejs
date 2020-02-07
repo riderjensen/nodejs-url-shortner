@@ -29,30 +29,25 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-md-4"></div>
-			<div class="col-xs-12 col-md-4">
-				<h1>Admin area</h1>
-				<div class="card" style="width: 100%; margin-top: 15px;">
-					<div class="card-body">
-						<h5 class="card-title">ID: <%= resp.shortId%></h5>
-						<p class="card-text">URL: <%= resp.url%></p>
-						<p class="card-text">Visits: <%= resp.visits%></p>
-						<ul id="myUL">
-							<% for(var i=0; i<resp.occurance.length; i++) {%>
-							<li><%= resp.occurance[i]%></li>
-							<% } %>
-						</ul>
-						<a href="/<%= resp.shortId%>" class="btn btn-primary">Short Link</a>
-					</div>
-				</div>
+			<div class="col-xs-12 col-md-3"></div>
+			<div class="col-xs-12 col-md-6">
+				<h3 class="text-primary">ID: <%= resp.shortId%></h3>
+				<p class="card-text">URL: <a href="/<%= resp.shortId%>">Short Link</a></p>
+				<p class="card-text">Visits: <%= resp.visits%></p>
+				<ul id="myUL" class="list-group list-group-flush">
+					<% for(var i=0; i<resp.occurance.length; i++) {%>
+					<li class="text-muted" style="font-size: 12px;"><%= resp.occurance[i]%></li>
+					<% } %>
+				</ul>
 			</div>
-			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-3"></div>
 		</div>
 	</div>
 	<script>
 		const myList = document.getElementById('myUL').children;
 		for (let item in myList) {
-			myList[item].textContent = new Date(parseInt(myList[item].textContent))
+			const date =new Date(parseInt(myList[item].textContent));
+			myList[item].textContent = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
 		}
 	</script>
 	<script src="/js/bootstrap.js"></script>
