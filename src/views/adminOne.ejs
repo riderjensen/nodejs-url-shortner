@@ -44,9 +44,9 @@
 		</div>
 	</div>
 	<script>
-		const created = document.querySelector('#created').textContent;
-		const createdDate = new Date(created);
-		created = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
+		const created = document.querySelector('#created');
+		const createdDate = new Date(created.textContent);
+		created.textContent = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
 
 		const myList = document.querySelector('#myUL').children;
 		for (let item in myList) {
