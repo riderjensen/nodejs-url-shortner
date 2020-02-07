@@ -1,6 +1,5 @@
 const RESERVED_WORD = '5c7df95bcd19ac2d58fb4aa0';
 
-
 const shortid = require('shortid');
 const request = require('request');
 const ShortURLModel = require('../models/shortURL.model');
@@ -17,7 +16,7 @@ exports.checkID = (req, res, next) => {
 	// check to see if they added http
 	const addedItems = splitURL[0] + splitURL[1] + splitURL[2] + splitURL[3];
 	if (addedItems != 'http') {
-		requestingURL = 'http://' + requestingURL;
+		requestingURL = 'https://' + requestingURL;
 	}
 
 	let id = req.params.id;
@@ -47,7 +46,7 @@ exports.checkID = (req, res, next) => {
 			let message = null;
 			let websiteResp = true;
 			if (error != null) {
-				message = "The website did not return a response. If you are sure the URL is corrent then you may continue";
+				message = "The website did not return a response. We still created your link but you may want to check";
 				websiteResp = false;
 			}
 			const newURL = new ShortURLModel({
