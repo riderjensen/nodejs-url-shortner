@@ -40,7 +40,7 @@ exports.checkID = (req, res, next) => {
 	}
 
 	ShortURLModel.findOne({ shortId: id }).then(resp => {
-		if (resp) return res.send({ avail: false, websiteResp: false });
+		if (resp) return res.send({ message: "This short ID is already in use. Please pick another.", avail: false, websiteResp: false });
 
 		request(requestingURL, (error, response) => {
 			let message = null;
