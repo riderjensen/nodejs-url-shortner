@@ -30,7 +30,7 @@ function fetchInfo() {
 	}).then(response => {
 		return response.json();
 	}).then(myJson => {
-		console.log(myJson.resp);
+		console.log(myJson);
 		document.getElementById('cardTitle').innerHTML = `<a target="_blank" href="/${myJson.resp.shortId}">${myJson.resp.shortId}</a>`;
 	}).catch(err => console.log(err));
 
