@@ -16,7 +16,7 @@ function createErr(text, errorColor) {
 }
 
 function clearErr() {
-	URLBox.className = '';
+	URLBox.className = 'form-control';
 	ourErrorHtml.setAttribute('class', '');
 	ourErrorHtml.setAttribute('role', '');
 	ourErrorHtml.innerText = '';
