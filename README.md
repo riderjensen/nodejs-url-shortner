@@ -45,3 +45,4 @@ POST `/c/:id` - this is used to check a URL to see if the shortId is already in 
 
 1. ~~Add some error feedback on the MVC~~
 2. Add some better auth like JWT
+3. Add a visited graph so people can see metrics

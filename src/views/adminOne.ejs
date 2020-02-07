@@ -45,7 +45,7 @@
 	</div>
 	<script>
 		const created = document.querySelector('#created').textContent;
-		const createdDate = new Date(created.textContent);
+		const createdDate = new Date(created);
 		created.textContent = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
 		const myList = document.querySelector('#myUL').children;
 		for (let item in myList) {
