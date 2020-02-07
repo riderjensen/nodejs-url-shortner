@@ -59,17 +59,30 @@
 		for (let item in myList) {
 			const date = new Date(parseInt(myList[item].textContent));
 			myList[item].textContent = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
-			dateList.forEach(date => {
-				const parseDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`
-				if (date.x === parseDate) {
-					date.y++
-				} else {
-					dateList.push({
-						x: parseDate,
-						y: 1
-					})
-				}
-			})
+
+
+			const parseDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`
+
+			if (dateList.length > 0) {
+				dateList.forEach(myDateList => {
+					if (myDateList.x === parseDate) {
+						myDateList.y++
+					} else {
+						dateList.push({
+							x: parseDate,
+							y: 1
+						})
+					}
+				})
+			} else {
+				dateList.push({
+					x: parseDate,
+					y: 1
+				})
+			}
+
+
+
 		}
 
 		console.log(dateList)
