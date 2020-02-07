@@ -64,7 +64,7 @@
 					date.y++
 				} else {
 					dateList.push({
-						x: date.toLocaleDateString(),
+						x: `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`,
 						y: 1
 					})
 				}
@@ -72,10 +72,36 @@
 		}
 
 
-		var ctx = document.querySelector('#myChart');
-		var myChart = new Chart(ctx, {
+		const timeFormat = 'MM/DD/YYYY HH:mm';
+
+		const ctx = document.querySelector('#myChart');
+		const myChart = new Chart(ctx, {
 			type: 'line',
-			data: dateList
+			data: dateList,
+			options: {
+				title: {
+					text: 'URL Visited'
+				},
+				scales: {
+					xAxes: [{
+						type: 'time',
+						time: {
+							parser: timeFormat,
+							tooltipFormat: 'll HH:mm'
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'value'
+						}
+					}]
+				},
+			}
 		});
 		</script>
 </body>
