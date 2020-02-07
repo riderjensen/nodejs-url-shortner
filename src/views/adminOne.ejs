@@ -60,19 +60,20 @@
 			const date = new Date(parseInt(myList[item].textContent));
 			myList[item].textContent = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
 			dateList.forEach(date => {
-				if (date.x === date.toLocaleDateString()) {
+				const parseDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`
+				if (date.x === parseDate) {
 					date.y++
 				} else {
 					dateList.push({
-						x: `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`,
+						x: parseDate,
 						y: 1
 					})
 				}
 			})
 		}
 
+		console.log(dateList)
 
-		const timeFormat = 'MM/DD/YYYY HH:mm';
 
 		const ctx = document.querySelector('#myChart');
 		const myChart = new Chart(ctx, {
@@ -84,11 +85,6 @@
 				},
 				scales: {
 					xAxes: [{
-						type: 'time',
-						time: {
-							parser: timeFormat,
-							tooltipFormat: 'll HH:mm'
-						},
 						scaleLabel: {
 							display: true,
 							labelString: 'Date'
