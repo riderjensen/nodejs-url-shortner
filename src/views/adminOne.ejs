@@ -79,10 +79,6 @@
 			}
 		}
 
-		console.log(labels)
-		console.log(views);
-
-
 		new Chart(document.querySelector('#myChart'), {
 			type: 'line',
 			data: {
@@ -95,23 +91,17 @@
 				}]
 			},
 			options: {
-				title: {
-					text: 'URL Visited'
+				legend: {
+					display: false
 				},
 				scales: {
-					xAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: 'Date'
-						}
-					}],
 					yAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: 'value'
+						ticks: {
+							beginAtZero: true,
+							stepSize: 1
 						}
 					}]
-				},
+				}
 			}
 		});
 	</script>
