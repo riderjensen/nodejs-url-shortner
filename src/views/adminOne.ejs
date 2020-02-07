@@ -60,14 +60,14 @@
 			const date = new Date(parseInt(myList[item].textContent));
 			myList[item].textContent = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
 
+			const parseDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
 
-			const parseDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`
-
-
-			dateList.push({
-				x: parseDate,
-				y: 1
-			})
+			if(parseDate !== "Invalid Date Invalid Date") {
+				dateList.push({
+					x: parseDate,
+					y: 1
+				})
+			}
 
 		}
 
