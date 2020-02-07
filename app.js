@@ -2,7 +2,7 @@
 // ======================================
 
 const PORT = process.env.PORT || 3000;
-const BANNED_WORDS = ['cunt', 'fuck'];
+const BANNED_WORDS = ['a', 'c', 'cunt', 'fuck'];
 
 const MVC = true;
 
