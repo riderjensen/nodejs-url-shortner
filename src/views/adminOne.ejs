@@ -63,25 +63,11 @@
 
 			const parseDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`
 
-			if (dateList.length > 0) {
-				dateList.forEach(myDateList => {
-					if (myDateList.x === parseDate) {
-						myDateList.y++
-					} else {
-						dateList.push({
-							x: parseDate,
-							y: 1
-						})
-					}
-				})
-			} else {
-				dateList.push({
-					x: parseDate,
-					y: 1
-				})
-			}
 
-
+			dateList.push({
+				x: parseDate,
+				y: 1
+			})
 
 		}
 
