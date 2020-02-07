@@ -32,8 +32,8 @@
 			<div class="col-xs-12 col-md-3"></div>
 			<div class="col-xs-12 col-md-6 text-center">
 				<h3>ID: <%= resp.shortId%> - <a href="/<%= resp.shortId%>">Short Link</a></h3>
-				<p class="card-text">Created At: <span id="created"><%= resp.createdAt%></span></p>
-				<p class="card-text">Visits: <%= resp.visits%></p>
+				<p class="text-muted" style="margin: 0;">Created At: <span id="created"><%= resp.createdAt%></span></p>
+				<p>Visits: <%= resp.visits%></p>
 				<ul id="myUL" class="list-group list-group-flush">
 					<% for(var i=0; i<resp.occurance.length; i++) {%>
 					<li class="text-muted list-group-item" style="font-size: 12px;"><%= resp.occurance[i]%></li>
@@ -44,9 +44,9 @@
 		</div>
 	</div>
 	<script>
-		const created = document.querySelector('#created');
+		const created = document.querySelector('#created').textContent;
 		const createdDate = new Date(created.textContent);
-		created.textContent.textContent = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
+		created.textContent = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
 		const myList = document.querySelector('#myUL').children;
 		for (let item in myList) {
 			const date = new Date(parseInt(myList[item].textContent));
