@@ -54,7 +54,7 @@
 		created.textContent = `${createdDate.toLocaleDateString()} ${createdDate.toLocaleTimeString()}`
 
 		// list of dates visited
-		const myList = []
+		const myDateList = []
 		const myList = document.querySelector('#myUL').children;
 		for (let item in myList) {
 			const date = new Date(parseInt(myList[item].textContent));
@@ -62,7 +62,7 @@
 			myList[item].textContent = parsedDate
 
 			if(parsedDate !== "Invalid Date Invalid Date") {
-				myList.push({
+				myDateList.push({
 					x: parsedDate,
 					y: 1
 				})
@@ -70,13 +70,13 @@
 
 		}
 
-		console.log(myList)
+		console.log(myDateList)
 
 
 		const ctx = document.querySelector('#myChart');
 		const myChart = new Chart(ctx, {
 			type: 'line',
-			data: myList,
+			data: myDateList,
 			options: {
 				title: {
 					text: 'URL Visited'
