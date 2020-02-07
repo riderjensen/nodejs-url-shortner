@@ -63,11 +63,13 @@
 			const parsedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
 			myList[item].textContent = parsedDate
 
-			if (!labels.includes(parsedDate)) {
-				labels.push(parsedDate);
-				views.push(1)
-			} else {
-				views[labels.indexOf(parsedDate)]++
+			if (parsedDate !== "Invalid Date Invalid Date") {
+				if (!labels.includes(parsedDate)) {
+					labels.push(parsedDate);
+					views.push(1)
+				} else {
+					views[labels.indexOf(parsedDate)]++
+				}
 			}
 		}
 
@@ -78,9 +80,9 @@
 		new Chart(document.querySelector('#myChart'), {
 			type: 'line',
 			data: {
-				labels: [1, 2, 3, 4, 5, 6, 7],
+				labels: labels,
 				"datasets": [{
-					"data": [65, 59, 80, 81, 56, 55, 40],
+					"data": views,
 					"fill": false,
 					"borderColor": "rgb(75, 192, 192)",
 					"lineTension": 0.1
@@ -110,20 +112,3 @@
 </body>
 
 </html>
-
-<script>
-	new Chart(document.getElementById("chartjs-0"), {
-		"type": "line",
-		"data": {
-			"labels": ["January", "February", "March", "April", "May", "June", "July"],
-			"datasets": [{
-				"label": "My First Dataset",
-				"data": [65, 59, 80, 81, 56, 55, 40],
-				"fill": false,
-				"borderColor": "rgb(75, 192, 192)",
-				"lineTension": 0.1
-			}]
-		},
-		"options": {}
-	});
-</script>
